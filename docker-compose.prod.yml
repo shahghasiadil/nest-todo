@@ -3,7 +3,7 @@ services:
     container_name: nestjs_api
     build:
       context: .
-      target: production
+      dockerfile: prod.Dockerfile
     ports:
       - "3000:3000"
     environment:
