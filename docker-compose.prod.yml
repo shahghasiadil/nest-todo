@@ -11,6 +11,8 @@ services:
       - NODE_ENV=production
     depends_on:
       - mongodb
+    networks:
+      - nest-todo
     
   mongodb:
     container_name: mongodb
@@ -19,6 +21,12 @@ services:
       - mongodb_data:/data/db
     environment:
       - MONGO_INITDB_DATABASE=todo_db
+    networks:
+      - nest-todo
+
+networks:
+  nest-todo:
+    driver: bridge
 
 volumes:
   mongodb_data: 
