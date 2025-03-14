@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:22.14-alpine
 WORKDIR /app
 
 # Copy only the files needed to install dependencies
