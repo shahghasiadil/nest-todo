@@ -11,11 +11,13 @@ import { TodoModule } from './todo/todo.module';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
+        uri:
+          configService.get<string>('MONGODB_URI') ||
+          'mongodb://localhost:27017/todo_db',
       }),
       inject: [ConfigService],
     }),
     TodoModule,
   ],
 })
-export class AppModule { }
+export class AppModule {}
