@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    container_name: nestjs_api
+    build:
+      context: .
+      target: production
+    ports:
+      - "3000:3000"
+    environment:
+      - MONGODB_URI=mongodb://mongodb:27017/todo_db
+      - NODE_ENV=production
+    depends_on:
+      - mongodb
+    
+  mongodb:
+    container_name: mongodb
+    image: mongo:latest
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=todo_db
+
+volumes:
+  mongodb_data: 
