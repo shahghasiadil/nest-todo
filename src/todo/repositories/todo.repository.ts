@@ -18,7 +18,7 @@ export class TodoRepository implements ITodoRepository {
   }
 
   async findAll(): Promise<Todo[]> {
-    return this.todoModel.find().exec();
+    return this.todoModel.find().sort({ _id: -1 }).exec();
   }
 
   async findOne(id: string): Promise<Todo> {
